@@ -1,8 +1,6 @@
 #ifndef AUCTION_GUARD_H
 #define AUCTION_GUARD_H
 
-#include <queue>
-
 class cOrder;
 class cBuyOrder;
 class cSellOrder;

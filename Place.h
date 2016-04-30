@@ -4,9 +4,11 @@
 class cPlace
 {
 public:
+    cPlace(const char * name);
+    const char * GetName();
 
 private:
-
+    std::string m_name;
 };
 
 
