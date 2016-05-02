@@ -1,14 +1,22 @@
 #ifndef ORDER_GUARD_H
 #define ORDER_GUARD_H
 
+class cNode;
+
 class cOrder
 {
 public:
-    virtual void Set(double amount, double price);
-    virtual double GetAmount() const;
-    virtual double GetPrice() const;
+    cOrder(cNode & sourceNode);
+    cOrder & operator=(const cOrder & x); 
+    void Set(double amount, double price);    
 
-private:
+    double GetAmount() const;
+    double GetPrice() const;
+
+    virtual void Resolve(double amount) = 0;
+
+protected:
+    cNode & m_sourceNode;
     double m_amount;
     double m_price;
 };
@@ -16,6 +24,10 @@ private:
 class cSellOrder : public cOrder
 {
 public:
+    cSellOrder(cNode & sourceNode);
+
+    virtual void Resolve(double amount);
+
     bool operator<(const cOrder & x) const; 
     bool operator>(const cOrder & x) const; 
     bool operator<=(const cOrder & x) const; 
@@ -27,6 +39,10 @@ public:
 class cBuyOrder : public cOrder
 {
 public:
+    cBuyOrder(cNode & sourceNode);
+
+    virtual void Resolve(double amount);
+
     bool operator<(const cOrder & x) const; 
     bool operator>(const cOrder & x) const; 
     bool operator<=(const cOrder & x) const; 

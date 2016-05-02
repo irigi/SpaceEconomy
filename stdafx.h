@@ -12,6 +12,7 @@
 #include <queue>
 #include <map>
 #include <vector>
+#include <iostream>
 
 #include "Resource.h"
 #include "Order.h"

@@ -15,8 +15,17 @@ private:
     double m_amountMultiplier;
 };
 
-class cNodeOutput : public cNodeIO {};
-class cNodeInput : public cNodeIO {};
+class cNodeOutput : public cNodeIO 
+{
+public:
+    cNodeOutput(const cResource &resource, double amountMultiplier) : cNodeIO(resource, amountMultiplier) {};
+};
+
+class cNodeInput : public cNodeIO 
+{
+public:
+    cNodeInput(const cResource &resource, double amountMultiplier) : cNodeIO(resource, amountMultiplier) {};
+};
 
 class cNode
 {
@@ -28,13 +37,16 @@ public:
     void AddNodeInput(const cNodeInput & input);
     void AddNodeOutput(const cNodeOutput & output);
 
+    cNodeInput & GetNodeInput(const cResource & resource);
+    cNodeOutput & GetNodeOutput(const cResource & resource);
+
 private:
     double m_priceMultiplier;
 
-    std::vector<cNodeInput> m_nodeInputs;
-    std::vector<cNodeOutput> m_nodeOutputs;
+    std::map<int, cNodeInput> m_nodeInputs;
+    std::map<int, cNodeOutput> m_nodeOutputs;
 
-    cPlace & placeOfNode, placeOfInputs, placeOfOutputs;
+    cPlace & m_placeOfNode, m_placeOfInputs, m_placeOfOutputs;
 };
 
 

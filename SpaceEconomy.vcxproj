@@ -92,6 +92,7 @@
     <ClCompile Include="NodeTypes.cpp" />
     <ClCompile Include="Order.cpp" />
     <ClCompile Include="Place.cpp" />
+    <ClCompile Include="Resource.cpp" />
     <ClCompile Include="ResourceTypes.cpp" />
     <ClCompile Include="SpaceEconomy.cpp" />
     <ClCompile Include="stdafx.cpp" />

@@ -5,36 +5,41 @@
 
 std::vector<cPlace> possiblePlaces;
 
-void Test()
-{
-    for(unsigned int i = 0; i < possiblePlaces.size(); ++i)
-    {
-        printf("%s\n", possiblePlaces.at(i).GetName());
-    }
-
-    //cAuction auctionEarth;
-    //cSellOrder order;
-
-    //order.Set(100, 10.0);
-    //auctionEarth.AddSellOrder(order);
-
-    //order.Set(100, 20.0);
-    //auctionEarth.AddSellOrder(order);
-
-    //printf("top bid %f\n", auctionEarth.GetLowestSell().GetPrice());
-
-    //order.Set(100, 30.0);
-
-    //printf("top bid %f\n", auctionEarth.GetHighestBuy().GetPrice());
-    getchar();
-}
+//void Test()
+//{
+//    for(unsigned int i = 0; i < possiblePlaces.size(); ++i)
+//    {
+//        printf("%s\n", possiblePlaces.at(i).GetName());
+//    }
+//
+//    cResource resource;
+//    cAuction auctionEarth;
+//    cNode node(possiblePlaces.at(0), possiblePlaces.at(0), possiblePlaces.at(0));
+//    cNodeInput nodeIO(resource, 1.0);
+//    node.AddNodeInput(nodeIO);
+//    cSellOrder order(node);
+//
+//    order.Set(100, 10.0);
+//    auctionEarth.AddSellOrder(order);
+//
+//    order.Set(100, 20.0);
+//    auctionEarth.AddSellOrder(order);
+//
+//    printf("top bid %f\n", auctionEarth.GetLowestSell().GetPrice());
+//
+//    order.Set(100, 30.0);
+//
+//    printf("top bid %f\n", auctionEarth.GetHighestBuy().GetPrice());
+//    getchar();
+//}
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-    InitializeResourceTypes();
-    InitializePlaces();
+    printf("x\n");
+    //InitializeResourceTypes();
+    //InitializePlaces();
 
-    Test();
+    //Test();
 
 
 	return 0;

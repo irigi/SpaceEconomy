@@ -4,6 +4,8 @@
 class cOrder;
 class cBuyOrder;
 class cSellOrder;
+class cNode;
+class cPlace;
 
 class cAuction
 {
@@ -19,6 +21,9 @@ public:
 private:
     std::priority_queue<const cBuyOrder> m_buyQ;
     std::priority_queue<const cSellOrder> m_sellQ;
+
+    static cPlace noPlace;
+    static cNode noNode;
 
 };
 
