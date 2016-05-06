@@ -12,7 +12,7 @@ std::vector<cPlace> possiblePlaces;
 //        printf("%s\n", possiblePlaces.at(i).GetName());
 //    }
 //
-//    cResource resource;
+//    cResource resource("test");
 //    cAuction auctionEarth;
 //    cNode node(possiblePlaces.at(0), possiblePlaces.at(0), possiblePlaces.at(0));
 //    cNodeInput nodeIO(resource, 1.0);
@@ -36,11 +36,13 @@ std::vector<cPlace> possiblePlaces;
 int _tmain(int argc, _TCHAR* argv[])
 {
     printf("x\n");
-    //InitializeResourceTypes();
-    //InitializePlaces();
+    InitializeResourceTypes();
+    InitializePlaces();
 
     //Test();
 
+
+    printf("y\n");
 
 	return 0;
 }
