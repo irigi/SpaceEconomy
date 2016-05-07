@@ -13,7 +13,8 @@ void Test()
 
     cResource resource("test");
     cAuction auctionEarth;
-    cNode node(cPlace::GetByName("Merkur"), cPlace::GetByName("Merkur"), cPlace::GetByName("Merkur"));
+	cNoStrategy strategy;
+    cNode node(cPlace::GetByName("Merkur"), cPlace::GetByName("Merkur"), cPlace::GetByName("Merkur"), cNoStrategy::getInstance());
     cNodeInput nodeI(resource, 1.0);
     node.AddNodeInput(nodeI);
 	cNodeOutput nodeO(resource, 1.0);
@@ -52,6 +53,21 @@ int main()
     InitializeResourceTypes();
     InitializePlaces();
 
+	const long iterations = 5;
+
+	for (int i = 0; i < iterations; ++i)
+	{
+		for (std::map<std::string, cPlace>::iterator it = cPlace::possiblePlaces.begin(); it != cPlace::possiblePlaces.end(); ++it)
+		{
+			(*it).second.PlanActions();
+		}
+
+		for (std::map<std::string, cPlace>::iterator it = cPlace::possiblePlaces.begin(); it != cPlace::possiblePlaces.end(); ++it)
+		{
+			(*it).second.Resolve();
+		}
+	}
+
     Test();
 
 	return 0;
@@ -67,6 +83,7 @@ void InitializePlaces()
 	cPlace::InsertByString("Jupiter");
 	cPlace::InsertByString("Saturn");
 	cPlace::InsertByString("Uran");
+	cPlace::InsertByString("Neptun");
 	cPlace::InsertByString("Pluto");
 }
 

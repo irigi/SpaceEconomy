@@ -35,3 +35,21 @@ const char * cPlace::GetName()
 {
     return m_name.c_str();
 }
+
+void cPlace::AddNode(cNode & node)
+{
+	m_nodes.push_back(node);
+}
+
+void cPlace::Resolve()
+{
+	m_auction.Resolve();
+}
+
+void cPlace::PlanActions()
+{
+	for (std::vector<cNode>::iterator it = m_nodes.begin(); it != m_nodes.end(); it++)
+	{
+		(*it).PlanActions();
+	}
+}

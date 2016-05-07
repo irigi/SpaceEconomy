@@ -19,6 +19,7 @@
 #include "Order.h"
 #include "Auction.h"
 #include "Place.h"
+#include "Strategy.h"
 #include "Node.h"
 
 extern void InitializeResourceTypes();

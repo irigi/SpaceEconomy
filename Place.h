@@ -1,11 +1,18 @@
 #ifndef PLACE_GUARD_H
 #define PLACE_GUARD_H
 
+class cAuction;
+class cNode;
+
 class cPlace
 {
 public:
     cPlace(const char * name);
     const char * GetName();
+
+	void AddNode(cNode & node);
+	void Resolve();
+	void PlanActions();
 
 	static cPlace &GetByName(const char *name);
 	static void InsertByString(const char *str);
@@ -14,6 +21,8 @@ public:
 
 private:
     std::string m_name;
+	cAuction m_auction;
+	std::vector<cNode> m_nodes;
 };
 
 

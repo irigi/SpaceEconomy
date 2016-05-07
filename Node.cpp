@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-cNode cNode::noNode(cPlace::noPlace, cPlace::noPlace, cPlace::noPlace);
+cNode cNode::noNode(cPlace::noPlace, cPlace::noPlace, cPlace::noPlace, cNoStrategy::getInstance());
 
 cNodeIO cNodeIO::noNodeIO(cResource::noResource, 1.0);
 cNodeOutput cNodeOutput::noNodeOutput(cResource::noResource, 1.0);
@@ -11,12 +11,13 @@ cNodeIO::cNodeIO(const cResource &resource, double amountMultiplier)
 {
 }
 
-cNode::cNode(cPlace & placeOfNode, cPlace & placeOfInputs, cPlace & placeOfOutputs)
-    : m_placeOfNode(placeOfNode), m_placeOfInputs(placeOfInputs), m_placeOfOutputs(placeOfOutputs)
+void cNode::PlanActions()
 {
+	m_strategy.PlanActions(*this);
 }
 
-void cNode::DoStep()
+cNode::cNode(cPlace & placeOfNode, cPlace & placeOfInputs, cPlace & placeOfOutputs, cStrategy & strategy)
+    : m_placeOfNode(placeOfNode), m_placeOfInputs(placeOfInputs), m_placeOfOutputs(placeOfOutputs), m_strategy(strategy)
 {
 }
 
