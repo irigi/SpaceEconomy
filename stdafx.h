@@ -7,10 +7,9 @@
 
 #include "targetver.h"
 
+#include <stdio.h>
 #include <iostream>
 #include <string>
-//#include <stdio.h>
-#include <tchar.h>
 #include <queue>
 #include <map>
 #include <vector>
@@ -23,8 +22,6 @@
 #include "Node.h"
 
 extern void InitializeResourceTypes();
-
-//extern std::vector<cPlace> possiblePlaces;
 extern void InitializePlaces();
 
 

@@ -6,21 +6,21 @@ class cResource
 public:
     cResource(const char *name);
     int GetID() const;
-    const char * GetName();
+    const std::string & GetName();
     bool operator <(const cResource &x) const;
     bool operator ==(const cResource &x) const;
     bool operator !=(const cResource &x) const;
 
-    static cResource &GetResourceByName(const char *name);
+    static cResource &GetByName(const char *name);
     static void InsertByString(const char *str);
+	static cResource noResource;
 
 private:
     int m_id;
     std::string m_name;
 
     static int uniqueID;
-    //static std::map<std::string, cResource> possibleResources;
-    static cResource noResource;
+    static std::map<std::string, cResource> possibleResources;
 };
 
 

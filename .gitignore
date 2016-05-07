@@ -4,3 +4,4 @@
 /SpaceSchedule/Release/*
 /Release/*
 /ipch/*
+*.db

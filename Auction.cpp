@@ -1,13 +1,9 @@
 #include "stdafx.h"
 
-cPlace cAuction::noPlace("No Place");
-
-cNode cAuction::noNode(noPlace, noPlace, noPlace);
-
 cAuction::cAuction()
 {
-    cSellOrder sell(noNode);
-    cBuyOrder buy(noNode);
+    cSellOrder sell(cNode::noNode);
+    cBuyOrder buy(cNode::noNode);
 
     sell.Set(0.0, 1e79);
     buy.Set(0.0, 0.0);

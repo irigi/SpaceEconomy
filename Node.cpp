@@ -1,5 +1,7 @@
 #include "stdafx.h"
 
+cNode cNode::noNode(cPlace::noPlace, cPlace::noPlace, cPlace::noPlace);
+
 cNodeIO::cNodeIO(const cResource &resource, double amountMultiplier)
     : m_resource(resource), m_amountMultiplier(amountMultiplier)
 {
@@ -16,20 +18,41 @@ void cNode::DoStep()
 
 void cNode::AddNodeInput(const cNodeInput & input)
 {
-    //m_nodeInputs.insert(std::pair<int, cNodeInput>(input.GetResource().GetID(), input));
+    m_nodeInputs.insert(std::pair<int, cNodeInput>(input.GetResource().GetID(), input));
 }
 
 void cNode::AddNodeOutput(const cNodeOutput & output)
 {
-    //m_nodeOutputs.insert(std::pair<int, cNodeOutput>(output.GetResource().GetID(), output));
+    m_nodeOutputs.insert(std::pair<int, cNodeOutput>(output.GetResource().GetID(), output));
 }
 
-//cNodeInput & cNode::GetNodeInput(const cResource & resource)
-//{
-//
-//}
-//
-//cNodeOutput & cNode::GetNodeOutput(const cResource & resource)
-//{
-//
-//}
+cNodeOutput cNodeOutput::noNodeOutput(cResource::noResource, 1.0);
+cNodeInput cNodeInput::noNodeInput(cResource::noResource, 1.0);
+
+cNodeInput & cNode::GetNodeInput(const cResource & resource)
+{
+	std::map<int, cNodeInput>::iterator it = m_nodeInputs.find(resource.GetID());
+	if (it != m_nodeInputs.end())
+	{
+		return (*it).second;
+	}
+	else
+	{
+		printf("Input node not found by name.\n");
+		return cNodeInput::noNodeInput;
+	}
+}
+
+cNodeOutput & cNode::GetNodeOutput(const cResource & resource)
+{
+	std::map<int, cNodeOutput>::iterator it = m_nodeOutputs.find(resource.GetID());
+	if (it != m_nodeOutputs.end())
+	{
+		return (*it).second;
+	}
+	else
+	{
+		printf("Output node not found by name.\n");
+		return cNodeOutput::noNodeOutput;
+	}
+}

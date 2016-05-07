@@ -4,22 +4,25 @@ int cResource::uniqueID = 0;
 
 cResource cResource::noResource("no resource");
 
-//std::map<std::string, cResource> cResource::possibleResources;
+std::map<std::string, cResource> cResource::possibleResources;
 
-cResource & cResource::GetResourceByName(const char *name)
+void cResource::InsertByString(const char *str)
 {
-    //std::string nameAsStr(name);
+	cResource::possibleResources.insert(std::pair<std::string, cResource>(std::string(str), cResource(str)));
+}
 
-    //std::map<std::string, cResource>::iterator it = possibleResources.find(nameAsStr);
-    //if (it != possibleResources.end())
-    //{
-    //    return (*it).second;
-    //}
-    //else
-    //{
-    //    printf("Resource not found by name.\n");
-    //    return noResource;
-    //}
+cResource & cResource::GetByName(const char *name)
+{
+    std::map<std::string, cResource>::iterator it = possibleResources.find(name);
+    if (it != possibleResources.end())
+    {
+        return (*it).second;
+    }
+    else
+    {
+        printf("Resource not found by name.\n");
+        return noResource;
+    }
 
     return noResource;
 }
@@ -29,6 +32,11 @@ cResource::cResource(const char *name)
     m_id = uniqueID;
     m_name = name;
     ++uniqueID;
+}
+
+const std::string & cResource::GetName()
+{
+	return m_name;
 }
 
 int cResource::GetID() const
