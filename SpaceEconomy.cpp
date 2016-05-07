@@ -14,21 +14,33 @@ void Test()
     cResource resource("test");
     cAuction auctionEarth;
     cNode node(cPlace::GetByName("Merkur"), cPlace::GetByName("Merkur"), cPlace::GetByName("Merkur"));
-    cNodeInput nodeIO(resource, 1.0);
-    node.AddNodeInput(nodeIO);
-    cSellOrder order(node);
+    cNodeInput nodeI(resource, 1.0);
+    node.AddNodeInput(nodeI);
+	cNodeOutput nodeO(resource, 1.0);
+	node.AddNodeOutput(nodeO);
 
-    order.Set(100, 10.0);
-    auctionEarth.AddSellOrder(order);
+    cSellOrder orderS(node, nodeO);
+	cBuyOrder orderB(node, nodeI);
 
-    order.Set(100, 20.0);
-    auctionEarth.AddSellOrder(order);
+    orderS.Set(100, 10.0);
+    auctionEarth.AddSellOrder(orderS);
 
-    printf("top bid %f\n", auctionEarth.GetLowestSell().GetPrice());
+    orderS.Set(100, 20.0);
+    auctionEarth.AddSellOrder(orderS);
 
-    order.Set(100, 30.0);
+	orderS.Set(10, 5.0);
+	auctionEarth.AddSellOrder(orderS);
 
-    printf("top bid %f\n", auctionEarth.GetHighestBuy().GetPrice());
+    orderB.Set(100, 7.0);
+	auctionEarth.AddBuyOrder(orderB);
+
+	printf("top sell bid %f, amount %f\n", auctionEarth.GetLowestSell().GetPrice(), auctionEarth.GetLowestSell().GetAmount());
+	printf("top buy bid %f, amount %f\n", auctionEarth.GetHighestBuy().GetPrice(), auctionEarth.GetHighestBuy().GetAmount());
+
+	auctionEarth.Resolve();
+
+	printf("top sell bid %f, amount %f\n", auctionEarth.GetLowestSell().GetPrice(), auctionEarth.GetLowestSell().GetAmount());
+    printf("top buy bid %f, amount %f\n", auctionEarth.GetHighestBuy().GetPrice(), auctionEarth.GetHighestBuy().GetAmount());
 
     printf("ID of food is %d\n", cResource::GetByName("food").GetID());
 
@@ -56,7 +68,6 @@ void InitializePlaces()
 	cPlace::InsertByString("Saturn");
 	cPlace::InsertByString("Uran");
 	cPlace::InsertByString("Pluto");
-
 }
 
 void InitializeResourceTypes()

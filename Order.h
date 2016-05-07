@@ -2,11 +2,14 @@
 #define ORDER_GUARD_H
 
 class cNode;
+class cNodeIO;
+class cNodeOutput;
+class cNodeInput;
 
 class cOrder
 {
 public:
-    cOrder(cNode & sourceNode);
+    cOrder(cNode & sourceNode, cNodeIO & nodeio);
     cOrder & operator=(const cOrder & x); 
     void Set(double amount, double price);    
 
@@ -17,6 +20,7 @@ public:
 
 protected:
     cNode & m_sourceNode;
+	cNodeIO & m_nodeio;
     double m_amount;
     double m_price;
 };
@@ -24,7 +28,7 @@ protected:
 class cSellOrder : public cOrder
 {
 public:
-    cSellOrder(cNode & sourceNode);
+    cSellOrder(cNode & sourceNode, cNodeOutput & nodeio);
 
     virtual void Resolve(double amount);
 
@@ -39,7 +43,7 @@ public:
 class cBuyOrder : public cOrder
 {
 public:
-    cBuyOrder(cNode & sourceNode);
+    cBuyOrder(cNode & sourceNode, cNodeInput & nodeio);
 
     virtual void Resolve(double amount);
 

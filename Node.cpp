@@ -2,6 +2,10 @@
 
 cNode cNode::noNode(cPlace::noPlace, cPlace::noPlace, cPlace::noPlace);
 
+cNodeIO cNodeIO::noNodeIO(cResource::noResource, 1.0);
+cNodeOutput cNodeOutput::noNodeOutput(cResource::noResource, 1.0);
+cNodeInput cNodeInput::noNodeInput(cResource::noResource, 1.0);
+
 cNodeIO::cNodeIO(const cResource &resource, double amountMultiplier)
     : m_resource(resource), m_amountMultiplier(amountMultiplier)
 {
@@ -25,9 +29,6 @@ void cNode::AddNodeOutput(const cNodeOutput & output)
 {
     m_nodeOutputs.insert(std::pair<int, cNodeOutput>(output.GetResource().GetID(), output));
 }
-
-cNodeOutput cNodeOutput::noNodeOutput(cResource::noResource, 1.0);
-cNodeInput cNodeInput::noNodeInput(cResource::noResource, 1.0);
 
 cNodeInput & cNode::GetNodeInput(const cResource & resource)
 {

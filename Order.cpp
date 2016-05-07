@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
-cOrder::cOrder(cNode & sourceNode) :
-    m_sourceNode(sourceNode)
+cOrder::cOrder(cNode & sourceNode, cNodeIO & nodeio) :
+    m_sourceNode(sourceNode), m_nodeio(nodeio)
 {
 }
 
@@ -29,8 +29,8 @@ double cOrder::GetPrice() const
     return m_price;
 }
 
-cSellOrder::cSellOrder(cNode & sourceNode) :
-    cOrder(sourceNode)
+cSellOrder::cSellOrder(cNode & sourceNode, cNodeOutput & nodeio) :
+    cOrder(sourceNode, nodeio)
 {
 }
 
@@ -75,11 +75,12 @@ void cSellOrder::Resolve(double amount)
         amount = m_amount;
     }
 
-    //m_sourceNode.SetResourceAmount();
+	m_nodeio.SetBuffer(m_nodeio.GetBuffer() - amount);
+	m_amount -= amount;
 }
 
-cBuyOrder::cBuyOrder(cNode & sourceNode) :
-    cOrder(sourceNode)
+cBuyOrder::cBuyOrder(cNode & sourceNode, cNodeInput & nodeio) :
+    cOrder(sourceNode, nodeio)
 {
 }
 
@@ -124,5 +125,6 @@ void cBuyOrder::Resolve(double amount)
         amount = m_amount;
     }
 
-    //m_sourceNode.SetResourceAmount();
+	m_nodeio.SetBuffer(m_nodeio.GetBuffer() + amount);
+	m_amount -= amount;
 }

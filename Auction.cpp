@@ -2,8 +2,8 @@
 
 cAuction::cAuction()
 {
-    cSellOrder sell(cNode::noNode);
-    cBuyOrder buy(cNode::noNode);
+    cSellOrder sell(cNode::noNode, cNodeOutput::noNodeOutput);
+    cBuyOrder buy(cNode::noNode, cNodeInput::noNodeInput);
 
     sell.Set(0.0, 1e79);
     buy.Set(0.0, 0.0);
@@ -44,5 +44,23 @@ void cAuction::Resolve()
         cBuyOrder b_order = m_buyQ.top();
         m_sellQ.pop();
         m_buyQ.pop();
+
+		double sAmount = s_order.GetAmount();
+		double bAmount = b_order.GetAmount();
+
+		if (sAmount > bAmount)
+		{
+			s_order.Resolve(bAmount);
+			b_order.Resolve(bAmount);
+
+			m_sellQ.push(s_order);
+		}
+		else 
+		{
+			s_order.Resolve(sAmount);
+			b_order.Resolve(sAmount);
+
+			m_buyQ.push(b_order);
+		}
     }
 }

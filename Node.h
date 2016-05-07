@@ -9,10 +9,15 @@ public:
     cNodeIO(const cResource &resource, double amountMultiplier);
     const cResource & GetResource() const { return m_resource; }
     double GetAmountMultiplier() const { return m_amountMultiplier; }
+	double GetBuffer() const { return m_buffer; }
+	void SetBuffer(double amount) { m_buffer = amount; }
+
+	static cNodeIO noNodeIO;
 
 private:
     const cResource & m_resource;
     double m_amountMultiplier;
+	double m_buffer;
 };
 
 class cNodeOutput : public cNodeIO 
