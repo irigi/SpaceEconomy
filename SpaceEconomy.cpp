@@ -3,7 +3,7 @@
 
 #include "stdafx.h"
 
-std::vector<cPlace> possiblePlaces;
+//std::vector<cPlace> possiblePlaces;
 
 //void Test()
 //{
@@ -30,14 +30,16 @@ std::vector<cPlace> possiblePlaces;
 //    order.Set(100, 30.0);
 //
 //    printf("top bid %f\n", auctionEarth.GetHighestBuy().GetPrice());
+//
+//    //printf("ID of food is %d\n", cResource::GetResourceByName("food").GetID());
 //    getchar();
 //}
 
 int _tmain(int argc, _TCHAR* argv[])
 {
     printf("x\n");
-    InitializeResourceTypes();
-    InitializePlaces();
+    //InitializeResourceTypes();
+    //InitializePlaces();
 
     //Test();
 
@@ -49,36 +51,36 @@ int _tmain(int argc, _TCHAR* argv[])
 
 void InitializePlaces()
 {
-    cPlace Merkur = cPlace("Merkur");
-    possiblePlaces.push_back(Merkur);
-
-    cPlace Venuse = cPlace("Venuse");
-    possiblePlaces.push_back(Venuse);
-
-    cPlace Zeme = cPlace("Zeme");
-    possiblePlaces.push_back(Zeme);
-
-    cPlace Mesic = cPlace("Mesic");
-    possiblePlaces.push_back(Mesic);
-
-    cPlace Mars = cPlace("Mars");
-    possiblePlaces.push_back(Mars);
-
-    cPlace Ceres = cPlace("Ceres");
-    possiblePlaces.push_back(Ceres);
-
-    cPlace Jupiter = cPlace("Jupiter");
-    possiblePlaces.push_back(Jupiter);
-
-    cPlace Saturn = cPlace("Saturn");
-    possiblePlaces.push_back(Saturn);
-
-    cPlace Uran = cPlace("Uran");
-    possiblePlaces.push_back(Uran);
-
-    cPlace Neptun = cPlace("Neptun");
-    possiblePlaces.push_back(Neptun);
-
-    cPlace Pluto = cPlace("Pluto");
-    possiblePlaces.push_back(Pluto);
+//    cPlace Merkur = cPlace("Merkur");
+//    possiblePlaces.push_back(Merkur);
+//
+//    cPlace Venuse = cPlace("Venuse");
+//    possiblePlaces.push_back(Venuse);
+//
+//    cPlace Zeme = cPlace("Zeme");
+//    possiblePlaces.push_back(Zeme);
+//
+//    cPlace Mesic = cPlace("Mesic");
+//    possiblePlaces.push_back(Mesic);
+//
+//    cPlace Mars = cPlace("Mars");
+//    possiblePlaces.push_back(Mars);
+//
+//    cPlace Ceres = cPlace("Ceres");
+//    possiblePlaces.push_back(Ceres);
+//
+//    cPlace Jupiter = cPlace("Jupiter");
+//    possiblePlaces.push_back(Jupiter);
+//
+//    cPlace Saturn = cPlace("Saturn");
+//    possiblePlaces.push_back(Saturn);
+//
+//    cPlace Uran = cPlace("Uran");
+//    possiblePlaces.push_back(Uran);
+//
+//    cPlace Neptun = cPlace("Neptun");
+//    possiblePlaces.push_back(Neptun);
+//
+//    cPlace Pluto = cPlace("Pluto");
+//    possiblePlaces.push_back(Pluto);
 }

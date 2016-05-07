@@ -16,10 +16,20 @@ void cNode::DoStep()
 
 void cNode::AddNodeInput(const cNodeInput & input)
 {
-    m_nodeInputs.insert(std::pair<int, cNodeInput>(input.GetResource().GetID(), input));
+    //m_nodeInputs.insert(std::pair<int, cNodeInput>(input.GetResource().GetID(), input));
 }
 
 void cNode::AddNodeOutput(const cNodeOutput & output)
 {
-    m_nodeOutputs.insert(std::pair<int, cNodeOutput>(output.GetResource().GetID(), output));
+    //m_nodeOutputs.insert(std::pair<int, cNodeOutput>(output.GetResource().GetID(), output));
 }
+
+//cNodeInput & cNode::GetNodeInput(const cResource & resource)
+//{
+//
+//}
+//
+//cNodeOutput & cNode::GetNodeOutput(const cResource & resource)
+//{
+//
+//}

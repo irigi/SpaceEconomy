@@ -1,11 +1,16 @@
 #include "stdafx.h"
 
-void InitializeResourceTypes()
+void cResource::InsertByString(const char *str)
 {
-    //possibleResources.push_back(cResource("water"));
-    //possibleResources.push_back(cResource("oxygen"));
-    //possibleResources.push_back(cResource("nitrogen"));
-    //possibleResources.push_back(cResource("iron"));
-    //possibleResources.push_back(cResource("food"));
-    //possibleResources.push_back(cResource("work"));
+    //cResource::possibleResources.insert(std::pair<std::string, cResource>(std::string(str), cResource(str)));
+}
+
+void InitializeResourceTypes()
+{    
+    cResource::InsertByString("water");
+    cResource::InsertByString("oxygen");
+    cResource::InsertByString("nitrogen");
+    cResource::InsertByString("iron");
+    cResource::InsertByString("food");
+    cResource::InsertByString("work");
 }

@@ -9,7 +9,7 @@
 
 #include <iostream>
 #include <string>
-#include <stdio.h>
+//#include <stdio.h>
 #include <tchar.h>
 #include <queue>
 #include <map>
@@ -24,7 +24,7 @@
 
 extern void InitializeResourceTypes();
 
-extern std::vector<cPlace> possiblePlaces;
+//extern std::vector<cPlace> possiblePlaces;
 extern void InitializePlaces();
 
 

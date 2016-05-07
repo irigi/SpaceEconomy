@@ -4,22 +4,24 @@ int cResource::uniqueID = 0;
 
 cResource cResource::noResource("no resource");
 
-std::map<std::string, cResource> cResource::possibleResources;
+//std::map<std::string, cResource> cResource::possibleResources;
 
 cResource & cResource::GetResourceByName(const char *name)
 {
-    std::string nameAsStr(name);
+    //std::string nameAsStr(name);
 
-    std::map<std::string, cResource>::iterator it = possibleResources.find(nameAsStr);
-    if (it != possibleResources.end())
-    {
-        return (*it).second;
-    }
-    else
-    {
-        printf("Resource not found by name.\n");
-        return noResource;
-    }
+    //std::map<std::string, cResource>::iterator it = possibleResources.find(nameAsStr);
+    //if (it != possibleResources.end())
+    //{
+    //    return (*it).second;
+    //}
+    //else
+    //{
+    //    printf("Resource not found by name.\n");
+    //    return noResource;
+    //}
+
+    return noResource;
 }
 
 cResource::cResource(const char *name)

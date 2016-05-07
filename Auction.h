@@ -19,8 +19,8 @@ public:
     void Resolve();
 
 private:
-    std::priority_queue<const cBuyOrder> m_buyQ;
-    std::priority_queue<const cSellOrder> m_sellQ;
+    std::priority_queue<cBuyOrder> m_buyQ;
+    std::priority_queue<cSellOrder> m_sellQ;
 
     static cPlace noPlace;
     static cNode noNode;

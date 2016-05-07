@@ -12,13 +12,14 @@ public:
     bool operator !=(const cResource &x) const;
 
     static cResource &GetResourceByName(const char *name);
+    static void InsertByString(const char *str);
 
 private:
     int m_id;
     std::string m_name;
 
     static int uniqueID;
-    static std::map<std::string, cResource> possibleResources;
+    //static std::map<std::string, cResource> possibleResources;
     static cResource noResource;
 };
 
