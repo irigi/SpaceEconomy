@@ -143,6 +143,7 @@
   <ItemGroup>
     <ClInclude Include="Auction.h" />
     <ClInclude Include="Node.h" />
+    <ClInclude Include="NodeIO.h" />
     <ClInclude Include="Order.h" />
     <ClInclude Include="Place.h" />
     <ClInclude Include="Resource.h" />
@@ -153,6 +154,7 @@
   <ItemGroup>
     <ClCompile Include="Auction.cpp" />
     <ClCompile Include="Node.cpp" />
+    <ClCompile Include="NodeIO.cpp" />
     <ClCompile Include="NodeTypes.cpp" />
     <ClCompile Include="Order.cpp" />
     <ClCompile Include="Place.cpp" />

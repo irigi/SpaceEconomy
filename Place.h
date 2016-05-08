@@ -14,6 +14,7 @@ public:
 	void Resolve();
 	void Clear();
 	void PlanActions();
+	cAuction & GetAuction() { return m_auction; }
 
 	static cPlace &GetByName(const char *name);
 	static void InsertByString(const char *str);

@@ -9,6 +9,7 @@
 
 #include <stdio.h>
 #include <iostream>
+#include <cmath>
 #include <string>
 #include <queue>
 #include <map>
@@ -19,6 +20,7 @@
 #include "Auction.h"
 #include "Place.h"
 #include "Strategy.h"
+#include "NodeIO.h"
 #include "Node.h"
 
 extern void InitializeResourceTypes();
