@@ -17,6 +17,7 @@ public:
     const cSellOrder& GetLowestSell() const;
     const cBuyOrder& GetHighestBuy() const;
     void Resolve();
+	void Clear();
 
 private:
     std::priority_queue<cBuyOrder> m_buyQ;

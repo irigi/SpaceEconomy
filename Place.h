@@ -12,6 +12,7 @@ public:
 
 	void AddNode(cNode & node);
 	void Resolve();
+	void Clear();
 	void PlanActions();
 
 	static cPlace &GetByName(const char *name);

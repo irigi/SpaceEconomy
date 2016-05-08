@@ -19,14 +19,18 @@ private:
 	static cNoStrategy instance;
 };
 
-class cTestingStrategy : cStrategy
+class cSupplyDemandStrategy : cStrategy
 {
 public:
 	static cStrategy & getInstance() { return instance; }
 	virtual void PlanActions(cNode & node);
 
+
+	void PlanSupply(cNode & node);
+	void PlanDemand(cNode & node);
+
 private:
-	static cTestingStrategy instance;
+	static cSupplyDemandStrategy instance;
 };
 
 

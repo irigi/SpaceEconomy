@@ -14,7 +14,6 @@
 #include <map>
 #include <vector>
 
-
 #include "Resource.h"
 #include "Order.h"
 #include "Auction.h"
@@ -24,6 +23,10 @@
 
 extern void InitializeResourceTypes();
 extern void InitializePlaces();
+
+#define MARGIN		1.2
+#define BINS		10
+#define BIN_MULT	0.1
 
 
 // TODO: reference additional headers your program requires here

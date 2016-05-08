@@ -36,6 +36,12 @@ const cBuyOrder& cAuction::GetHighestBuy() const
     return m_buyQ.top();
 }
 
+void cAuction::Clear()
+{
+	m_buyQ = std::priority_queue<cBuyOrder>();
+	m_sellQ = std::priority_queue<cSellOrder>();
+}
+
 void cAuction::Resolve()
 {
     while(GetLowestSell().GetPrice() <= GetHighestBuy().GetPrice())

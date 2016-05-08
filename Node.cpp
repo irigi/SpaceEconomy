@@ -3,12 +3,33 @@
 cNode cNode::noNode(cPlace::noPlace, cPlace::noPlace, cPlace::noPlace, cNoStrategy::getInstance());
 
 cNodeIO cNodeIO::noNodeIO(cResource::noResource, 1.0);
-cNodeOutput cNodeOutput::noNodeOutput(cResource::noResource, 1.0);
+cNodeOutput cNodeOutput::noNodeOutput(cResource::noResource, 1.0, 1.0);
 cNodeInput cNodeInput::noNodeInput(cResource::noResource, 1.0);
 
 cNodeIO::cNodeIO(const cResource &resource, double amountMultiplier)
     : m_resource(resource), m_amountMultiplier(amountMultiplier)
 {
+}
+
+void cNodeIO::Clear()
+{
+	m_CashFlow = 0.0;
+	m_CommodityFlow = 0.0;
+}
+
+void cNode::Clear()
+{
+	m_strategy.PlanActions(*this);
+
+	for (std::map<int, cNodeInput>::iterator it = m_nodeInputs.begin(); it != m_nodeInputs.end(); ++it)
+	{
+		(*it).second.Clear();
+	}
+
+	for (std::map<int, cNodeOutput>::iterator it = m_nodeOutputs.begin(); it != m_nodeOutputs.end(); ++it)
+	{
+		(*it).second.Clear();
+	}
 }
 
 void cNode::PlanActions()

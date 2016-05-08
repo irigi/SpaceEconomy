@@ -75,7 +75,8 @@ void cSellOrder::Resolve(double amount)
         amount = m_amount;
     }
 
-	m_nodeio.SetBuffer(m_nodeio.GetBuffer() - amount);
+	m_nodeio.SetCommodityFlow(m_nodeio.GetCommodityFlow() + amount);
+	m_nodeio.SetCashFlow(m_nodeio.GetCashFlow() + m_price*amount);
 	m_amount -= amount;
 }
 
@@ -125,6 +126,7 @@ void cBuyOrder::Resolve(double amount)
         amount = m_amount;
     }
 
-	m_nodeio.SetBuffer(m_nodeio.GetBuffer() + amount);
+	m_nodeio.SetCommodityFlow(m_nodeio.GetCommodityFlow() + amount);
+	m_nodeio.SetCashFlow(m_nodeio.GetCashFlow() + m_price*amount);
 	m_amount -= amount;
 }

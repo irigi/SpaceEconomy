@@ -46,9 +46,19 @@ void cPlace::Resolve()
 	m_auction.Resolve();
 }
 
+void cPlace::Clear()
+{
+	for (std::vector<cNode>::iterator it = m_nodes.begin(); it != m_nodes.end(); ++it)
+	{
+		(*it).Clear();
+	}
+
+	m_auction.Clear();
+}
+
 void cPlace::PlanActions()
 {
-	for (std::vector<cNode>::iterator it = m_nodes.begin(); it != m_nodes.end(); it++)
+	for (std::vector<cNode>::iterator it = m_nodes.begin(); it != m_nodes.end(); ++it)
 	{
 		(*it).PlanActions();
 	}

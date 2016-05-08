@@ -17,7 +17,7 @@ void Test()
     cNode node(cPlace::GetByName("Merkur"), cPlace::GetByName("Merkur"), cPlace::GetByName("Merkur"), cNoStrategy::getInstance());
     cNodeInput nodeI(resource, 1.0);
     node.AddNodeInput(nodeI);
-	cNodeOutput nodeO(resource, 1.0);
+	cNodeOutput nodeO(resource, 1.0, 1.0);
 	node.AddNodeOutput(nodeO);
 
     cSellOrder orderS(node, nodeO);
@@ -57,6 +57,11 @@ int main()
 
 	for (int i = 0; i < iterations; ++i)
 	{
+		for (std::map<std::string, cPlace>::iterator it = cPlace::possiblePlaces.begin(); it != cPlace::possiblePlaces.end(); ++it)
+		{
+			(*it).second.Clear();
+		}
+
 		for (std::map<std::string, cPlace>::iterator it = cPlace::possiblePlaces.begin(); it != cPlace::possiblePlaces.end(); ++it)
 		{
 			(*it).second.PlanActions();

@@ -11,11 +11,11 @@ public:
     const cResource & GetResource() const { return m_resource; }
     double GetAmountMultiplier() const { return m_amountMultiplier; }
 
-	double GetBuffer() const { return m_buffer; }
-	void SetBuffer(double amount) { m_buffer = amount; }
-	double GetPrice() const { return m_price; }
-	void SetPrice(double price) { m_price = price; }
-
+	double GetCommodityFlow() const { return m_CommodityFlow; }
+	void SetCommodityFlow(double amount) { m_CommodityFlow = amount; }
+	double GetCashFlow() const { return m_CashFlow; }
+	void SetCashFlow(double price) { m_CashFlow = price; }
+	void Clear();
 
 	static cNodeIO noNodeIO;
 
@@ -23,15 +23,21 @@ private:
     const cResource & m_resource;
     double m_amountMultiplier;
 
-	double m_buffer;
-	double m_price;
+	double m_CommodityFlow;
+	double m_CashFlow;
 };
 
 class cNodeOutput : public cNodeIO 
 {
 public:
 	static cNodeOutput noNodeOutput;
-    cNodeOutput(const cResource &resource, double amountMultiplier) : cNodeIO(resource, amountMultiplier) {};
+
+	double GetBasicPrice() const { return m_basicPrice; }
+	cNodeOutput(const cResource &resource, double amountMultiplier, double basicPrice) : 
+		cNodeIO(resource, amountMultiplier), m_basicPrice(basicPrice) {}
+
+private:
+	double m_basicPrice;
 };
 
 class cNodeInput : public cNodeIO 
@@ -44,6 +50,7 @@ public:
 class cNode
 {
 public:
+	static cNode noNode;
     cNode(cPlace & placeOfNode, cPlace & placeOfInputs, cPlace & placeOfOutputs, cStrategy & strategy);
 
     void AddNodeInput(const cNodeInput & input);
@@ -52,12 +59,17 @@ public:
     cNodeInput & GetNodeInput(const cResource & resource);
     cNodeOutput & GetNodeOutput(const cResource & resource);
 
-	void PlanActions();
+	std::map<int, cNodeInput> & GetInputs() { return m_nodeInputs;  }
+	std::map<int, cNodeOutput> & GetOutputs() { return m_nodeOutputs; }
 
-	static cNode noNode;
+	void PlanActions();
+	void Clear();
+
+	double GetNodeSize() const { return m_nodeSize;  }
+	void SetNodeSize(double size) { m_nodeSize = size; }
 
 private:
-    double m_priceMultiplier;
+    double m_nodeSize;
 	cStrategy &m_strategy;
 
     std::map<int, cNodeInput> m_nodeInputs;
